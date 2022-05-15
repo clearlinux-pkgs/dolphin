@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : dolphin
-Version  : 22.04.0
-Release  : 62
-URL      : https://download.kde.org/stable/release-service/22.04.0/src/dolphin-22.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.0/src/dolphin-22.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.0/src/dolphin-22.04.0.tar.xz.sig
+Version  : 22.04.1
+Release  : 63
+URL      : https://download.kde.org/stable/release-service/22.04.1/src/dolphin-22.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.1/src/dolphin-22.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.1/src/dolphin-22.04.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause GFDL-1.2 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -109,15 +109,15 @@ services components for the dolphin package.
 
 
 %prep
-%setup -q -n dolphin-22.04.0
-cd %{_builddir}/dolphin-22.04.0
+%setup -q -n dolphin-22.04.1
+cd %{_builddir}/dolphin-22.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650667416
+export SOURCE_DATE_EPOCH=1652645111
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -133,24 +133,24 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650667416
+export SOURCE_DATE_EPOCH=1652645111
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dolphin
-cp %{_builddir}/dolphin-22.04.0/COPYING %{buildroot}/usr/share/package-licenses/dolphin/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/dolphin-22.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/dolphin/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/dolphin-22.04.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/dolphin/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
-cp %{_builddir}/dolphin-22.04.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/dolphin/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/dolphin-22.04.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/dolphin/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/dolphin-22.04.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/dolphin/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/dolphin-22.04.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/dolphin/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/dolphin-22.04.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/dolphin/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/dolphin-22.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/dolphin/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/dolphin-22.04.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/dolphin/fa05e58320cb7c64786b26396f4b992579a628bc
-cp %{_builddir}/dolphin-22.04.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/dolphin/49e61f7864169f2e356c11a17422d7d20d74b40f
-cp %{_builddir}/dolphin-22.04.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/dolphin/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/dolphin-22.04.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/dolphin/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/dolphin-22.04.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/dolphin/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/dolphin-22.04.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/dolphin/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/dolphin-22.04.1/COPYING %{buildroot}/usr/share/package-licenses/dolphin/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/dolphin-22.04.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/dolphin/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/dolphin-22.04.1/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/dolphin/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
+cp %{_builddir}/dolphin-22.04.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/dolphin/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/dolphin-22.04.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/dolphin/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/dolphin-22.04.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/dolphin/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/dolphin-22.04.1/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/dolphin/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/dolphin-22.04.1/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/dolphin/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/dolphin-22.04.1/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/dolphin/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/dolphin-22.04.1/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/dolphin/fa05e58320cb7c64786b26396f4b992579a628bc
+cp %{_builddir}/dolphin-22.04.1/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/dolphin/49e61f7864169f2e356c11a17422d7d20d74b40f
+cp %{_builddir}/dolphin-22.04.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/dolphin/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/dolphin-22.04.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/dolphin/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/dolphin-22.04.1/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/dolphin/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/dolphin-22.04.1/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/dolphin/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
