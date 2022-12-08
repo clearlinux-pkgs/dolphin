@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : dolphin
-Version  : 22.08.3
-Release  : 69
-URL      : https://download.kde.org/stable/release-service/22.08.3/src/dolphin-22.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.3/src/dolphin-22.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.3/src/dolphin-22.08.3.tar.xz.sig
+Version  : 22.12.0
+Release  : 70
+URL      : https://download.kde.org/stable/release-service/22.12.0/src/dolphin-22.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.0/src/dolphin-22.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.0/src/dolphin-22.12.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause GFDL-1.2 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -26,6 +26,7 @@ BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
 BuildRequires : kactivities-dev
 BuildRequires : kfilemetadata-dev
+BuildRequires : kuserfeedback-dev
 BuildRequires : phonon-dev
 BuildRequires : ruby
 
@@ -109,15 +110,15 @@ services components for the dolphin package.
 
 
 %prep
-%setup -q -n dolphin-22.08.3
-cd %{_builddir}/dolphin-22.08.3
+%setup -q -n dolphin-22.12.0
+cd %{_builddir}/dolphin-22.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667873155
+export SOURCE_DATE_EPOCH=1670526120
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -133,7 +134,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667873155
+export SOURCE_DATE_EPOCH=1670526120
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dolphin
 cp %{_builddir}/dolphin-%{version}/COPYING %{buildroot}/usr/share/package-licenses/dolphin/7c203dee3a03037da436df03c4b25b659c073976 || :
@@ -177,11 +178,10 @@ popd
 /usr/share/config.kcfg/dolphin_versioncontrolsettings.kcfg
 /usr/share/dbus-1/interfaces/org.freedesktop.FileManager1.xml
 /usr/share/dbus-1/services/org.kde.dolphin.FileManager1.service
+/usr/share/dolphin/dolphinpartactions.desktop
 /usr/share/kconf_update/dolphin_detailsmodesettings.upd
 /usr/share/kglobalaccel/org.kde.dolphin.desktop
 /usr/share/knsrcfiles/servicemenu.knsrc
-/usr/share/kservices5/dolphinpart.desktop
-/usr/share/kservicetypes5/fileviewversioncontrolplugin.desktop
 /usr/share/locale/fi/LC_SCRIPTS/dolphin/dolphin.js
 /usr/share/metainfo/org.kde.dolphin.appdata.xml
 /usr/share/qlogging-categories5/dolphin.categories
@@ -275,6 +275,7 @@ popd
 /usr/share/doc/HTML/it/dolphin/preferences-services.png
 /usr/share/doc/HTML/it/dolphin/preferences-startup.png
 /usr/share/doc/HTML/it/dolphin/preferences-trash.png
+/usr/share/doc/HTML/it/dolphin/preferences-user-feedback.png
 /usr/share/doc/HTML/it/dolphin/preferences-viewmodes-icons.png
 /usr/share/doc/HTML/it/dolphin/toolbar-navigation.png
 /usr/share/doc/HTML/it/dolphin/toolbar-view-appearance.png
@@ -320,6 +321,8 @@ popd
 /usr/share/doc/HTML/ru/dolphin/index.docbook
 /usr/share/doc/HTML/sr/dolphin/index.cache.bz2
 /usr/share/doc/HTML/sr/dolphin/index.docbook
+/usr/share/doc/HTML/sr@latin/dolphin/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/dolphin/index.docbook
 /usr/share/doc/HTML/sv/dolphin/bookmarkbutton.png
 /usr/share/doc/HTML/sv/dolphin/breadcrumb.png
 /usr/share/doc/HTML/sv/dolphin/configurationwindow.png
