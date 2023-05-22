@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : dolphin
-Version  : 23.04.0
-Release  : 75
-URL      : https://download.kde.org/stable/release-service/23.04.0/src/dolphin-23.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.0/src/dolphin-23.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.0/src/dolphin-23.04.0.tar.xz.sig
+Version  : 23.04.1
+Release  : 76
+URL      : https://download.kde.org/stable/release-service/23.04.1/src/dolphin-23.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.04.1/src/dolphin-23.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.04.1/src/dolphin-23.04.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause GFDL-1.2 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -116,31 +116,48 @@ services components for the dolphin package.
 
 
 %prep
-%setup -q -n dolphin-23.04.0
-cd %{_builddir}/dolphin-23.04.0
+%setup -q -n dolphin-23.04.1
+cd %{_builddir}/dolphin-23.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682027604
+export SOURCE_DATE_EPOCH=1684789822
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake ..
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682027604
+export SOURCE_DATE_EPOCH=1684789822
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dolphin
 cp %{_builddir}/dolphin-%{version}/COPYING %{buildroot}/usr/share/package-licenses/dolphin/7c203dee3a03037da436df03c4b25b659c073976 || :
@@ -158,17 +175,23 @@ cp %{_builddir}/dolphin-%{version}/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{bu
 cp %{_builddir}/dolphin-%{version}/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/dolphin/7d9831e05094ce723947d729c2a46a09d6e90275 || :
 cp %{_builddir}/dolphin-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/dolphin/e458941548e0864907e654fa2e192844ae90fc32 || :
 cp %{_builddir}/dolphin-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/dolphin/e458941548e0864907e654fa2e192844ae90fc32 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
 %find_lang dolphin
 %find_lang dolphin_servicemenuinstaller
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/dolphin
+/V3/usr/bin/servicemenuinstaller
 /usr/bin/dolphin
 /usr/bin/servicemenuinstaller
 
@@ -195,6 +218,7 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libdolphinvcs.so
 /usr/include/Dolphin/KVersionControlPlugin
 /usr/include/Dolphin/dolphinvcs_version.h
 /usr/include/Dolphin/kversioncontrolplugin.h
@@ -386,6 +410,14 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/libdolphinprivate.so.5
+/V3/usr/lib64/libdolphinprivate.so.5.0.0
+/V3/usr/lib64/libdolphinvcs.so.5
+/V3/usr/lib64/libdolphinvcs.so.5.0.0
+/V3/usr/lib64/qt5/plugins/dolphin/kcms/kcm_dolphingeneral.so
+/V3/usr/lib64/qt5/plugins/dolphin/kcms/kcm_dolphinnavigation.so
+/V3/usr/lib64/qt5/plugins/dolphin/kcms/kcm_dolphinviewmodes.so
+/V3/usr/lib64/qt5/plugins/kf5/parts/dolphinpart.so
 /usr/lib64/libdolphinprivate.so.5
 /usr/lib64/libdolphinprivate.so.5.0.0
 /usr/lib64/libdolphinvcs.so.5
