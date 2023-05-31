@@ -7,7 +7,7 @@
 #
 Name     : dolphin
 Version  : 23.04.1
-Release  : 76
+Release  : 77
 URL      : https://download.kde.org/stable/release-service/23.04.1/src/dolphin-23.04.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.1/src/dolphin-23.04.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.1/src/dolphin-23.04.1.tar.xz.sig
@@ -124,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684789822
+export SOURCE_DATE_EPOCH=1685497362
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -157,7 +157,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684789822
+export SOURCE_DATE_EPOCH=1685497362
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dolphin
 cp %{_builddir}/dolphin-%{version}/COPYING %{buildroot}/usr/share/package-licenses/dolphin/7c203dee3a03037da436df03c4b25b659c073976 || :
@@ -218,7 +218,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libdolphinvcs.so
 /usr/include/Dolphin/KVersionControlPlugin
 /usr/include/Dolphin/dolphinvcs_version.h
 /usr/include/Dolphin/kversioncontrolplugin.h
@@ -410,9 +409,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libdolphinprivate.so.5
 /V3/usr/lib64/libdolphinprivate.so.5.0.0
-/V3/usr/lib64/libdolphinvcs.so.5
 /V3/usr/lib64/libdolphinvcs.so.5.0.0
 /V3/usr/lib64/qt5/plugins/dolphin/kcms/kcm_dolphingeneral.so
 /V3/usr/lib64/qt5/plugins/dolphin/kcms/kcm_dolphinnavigation.so
