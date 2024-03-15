@@ -9,7 +9,7 @@
 #
 Name     : dolphin
 Version  : 24.02.0
-Release  : 85
+Release  : 86
 URL      : https://download.kde.org/stable/release-service/24.02.0/src/dolphin-24.02.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/24.02.0/src/dolphin-24.02.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/24.02.0/src/dolphin-24.02.0.tar.xz.sig
@@ -22,6 +22,8 @@ Requires: dolphin-lib = %{version}-%{release}
 Requires: dolphin-license = %{version}-%{release}
 Requires: dolphin-locales = %{version}-%{release}
 Requires: dolphin-services = %{version}-%{release}
+BuildRequires : baloo-dev
+BuildRequires : baloo-widgets-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
@@ -122,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1710511631
+export SOURCE_DATE_EPOCH=1710512654
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -183,7 +185,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1710511631
+export SOURCE_DATE_EPOCH=1710512654
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dolphin
 cp %{_builddir}/dolphin-%{version}/COPYING %{buildroot}/usr/share/package-licenses/dolphin/7c203dee3a03037da436df03c4b25b659c073976 || :
