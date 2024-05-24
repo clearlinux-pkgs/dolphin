@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : dolphin
-Version  : 24.02.2
-Release  : 89
-URL      : https://download.kde.org/stable/release-service/24.02.2/src/dolphin-24.02.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/24.02.2/src/dolphin-24.02.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/24.02.2/src/dolphin-24.02.2.tar.xz.sig
+Version  : 24.05.0
+Release  : 90
+URL      : https://download.kde.org/stable/release-service/24.05.0/src/dolphin-24.05.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/24.05.0/src/dolphin-24.05.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/24.05.0/src/dolphin-24.05.0.tar.xz.sig
 Source2  : BB463350D6EF31EF.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -130,15 +130,15 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) BB463350D6EF31EF' gpg.status
-%setup -q -n dolphin-24.02.2
-cd %{_builddir}/dolphin-24.02.2
+%setup -q -n dolphin-24.05.0
+cd %{_builddir}/dolphin-24.05.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1713281799
+export SOURCE_DATE_EPOCH=1716520492
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -199,7 +199,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1713281799
+export SOURCE_DATE_EPOCH=1716520492
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dolphin
 cp %{_builddir}/dolphin-%{version}/COPYING %{buildroot}/usr/share/package-licenses/dolphin/7c203dee3a03037da436df03c4b25b659c073976 || :
@@ -256,6 +256,8 @@ popd
 /usr/share/dolphin/dolphinpartactions.desktop
 /usr/share/icons/hicolor/scalable/apps/org.kde.dolphin.svg
 /usr/share/kconf_update/dolphin_detailsmodesettings.upd
+/usr/share/kconf_update/dolphin_directorysizemode.py
+/usr/share/kconf_update/dolphin_directorysizemode.upd
 /usr/share/kglobalaccel/org.kde.dolphin.desktop
 /usr/share/knsrcfiles/servicemenu.knsrc
 /usr/share/metainfo/org.kde.dolphin.appdata.xml
@@ -455,14 +457,14 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libdolphinprivate.so.24.02.2
-/V3/usr/lib64/libdolphinvcs.so.24.02.2
+/V3/usr/lib64/libdolphinprivate.so.24.05.0
+/V3/usr/lib64/libdolphinvcs.so.24.05.0
 /V3/usr/lib64/qt6/plugins/dolphin/kcms/kcm_dolphingeneral.so
 /V3/usr/lib64/qt6/plugins/dolphin/kcms/kcm_dolphinviewmodes.so
 /V3/usr/lib64/qt6/plugins/kf6/parts/dolphinpart.so
-/usr/lib64/libdolphinprivate.so.24.02.2
+/usr/lib64/libdolphinprivate.so.24.05.0
 /usr/lib64/libdolphinprivate.so.6
-/usr/lib64/libdolphinvcs.so.24.02.2
+/usr/lib64/libdolphinvcs.so.24.05.0
 /usr/lib64/libdolphinvcs.so.6
 /usr/lib64/qt6/plugins/dolphin/kcms/kcm_dolphingeneral.so
 /usr/lib64/qt6/plugins/dolphin/kcms/kcm_dolphinviewmodes.so
