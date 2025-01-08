@@ -9,7 +9,7 @@
 #
 Name     : dolphin
 Version  : 24.12.0.1
-Release  : 99
+Release  : 100
 URL      : https://download.kde.org/stable/release-service/24.12.0/src/dolphin-24.12.0.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/24.12.0/src/dolphin-24.12.0.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/24.12.0/src/dolphin-24.12.0.1.tar.xz.sig
